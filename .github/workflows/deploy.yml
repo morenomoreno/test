@@ -26,16 +26,3 @@ jobs:
     steps:
       - name: Simular éxito en job3
         run: echo "Job 3 completado correctamente"
-
-  final_status:
-    runs-on: ubuntu-latest
-    needs: [job3]  # El estado final del workflow depende solo de job3
-    if: always()  # Se ejecuta siempre para asegurar que el workflow sigue su curso
-    steps:
-      - name: Verificar estado del job3
-        run: |
-          echo "Job3 result: ${{ needs.job3.result }}"
-
-      - name: Forzar éxito si job3 fue exitoso
-        if: success() || failure()  # Siempre finaliza correctamente si job3 fue exitoso
-        run: exit 0
