@@ -21,6 +21,7 @@ jobs:
 
   job3:
     runs-on: ubuntu-latest
+    needs: [job1]  # Solo se ejecuta si job1 finaliza correctamente
     steps:
       - name: Simular éxito en job3
         run: echo "Job 3 completado correctamente"
