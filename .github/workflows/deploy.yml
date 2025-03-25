@@ -14,6 +14,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: [job1]  # Solo se ejecuta si job1 finaliza correctamente
     steps:
       - name: Simular fallo en job2
